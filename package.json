@@ -26,18 +26,18 @@
     "dist/"
   ],
   "dependencies": {
-    "babel-runtime": "^5.8.20",
-    "passport-google-oauth": "^0.2.0"
+    "babel-runtime": "^6.11.6",
+    "passport-google-oauth": "^1.0.0"
   },
   "devDependencies": {
-    "babel": "^5.8.23",
-    "babel-eslint": "^4.1.1",
-    "clarify": "^1.0.5",
-    "mocha": "^2.3.1",
-    "must": "^0.12.0",
-    "source-map-support": "^0.3.2",
-    "standard": "^5.2.1",
-    "trace": "^1.2.0"
+    "babel": "^6.5.2",
+    "babel-eslint": "^6.1.2",
+    "clarify": "^2.0.0",
+    "mocha": "^3.0.2",
+    "must": "^0.13.2",
+    "source-map-support": "^0.4.2",
+    "standard": "^8.1.0",
+    "trace": "^2.3.3"
   },
   "scripts": {
     "build": "babel --source-maps --out-dir=dist/ src/",
