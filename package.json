@@ -31,7 +31,7 @@
   },
   "devDependencies": {
     "babel": "^5.8.23",
-    "babel-eslint": "^4.1.1",
+    "babel-eslint": "^7.0.0",
     "clarify": "^1.0.5",
     "mocha": "^2.3.1",
     "must": "^0.12.0",
