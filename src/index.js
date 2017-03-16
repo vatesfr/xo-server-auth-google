@@ -30,7 +30,7 @@ class AuthGoogleXoPlugin {
   configure (conf) {
     this._conf = {
       ...conf,
-      scope: 'https://www.googleapis.com/auth/plus.login'
+      scope: 'email profile'
     }
   }
 
@@ -40,7 +40,7 @@ class AuthGoogleXoPlugin {
     xo.registerPassportStrategy(new Strategy(this._conf, async (accessToken, refreshToken, profile, done) => {
       try {
         console.log(profile)
-        done(null, await xo.registerUser('google', profile.displayName))
+        done(null, await xo.registerUser('google', profile.emails[0].value))
       } catch (error) {
         done(error.message)
       }
