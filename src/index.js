@@ -14,6 +14,11 @@ export const configurationSchema = {
     },
     clientSecret: {
       type: 'string'
+    },
+    scope: {
+      default: 'https://www.googleapis.com/auth/plus.login',
+      enum: [ 'https://www.googleapis.com/auth/plus.login', 'email' ],
+      enumNames: [ 'Google+ name', 'Simple email address' ]
     }
   },
   required: ['callbackURL', 'clientID', 'clientSecret']
@@ -28,19 +33,21 @@ class AuthGoogleXoPlugin {
   }
 
   configure (conf) {
-    this._conf = {
-      ...conf,
-      scope: 'email profile'
-    }
+    this._conf = conf
   }
 
   load () {
+    const conf = this._conf
     const xo = this._xo
 
-    xo.registerPassportStrategy(new Strategy(this._conf, async (accessToken, refreshToken, profile, done) => {
+    xo.registerPassportStrategy(new Strategy(conf, async (accessToken, refreshToken, profile, done) => {
       try {
-        console.log(profile)
-        done(null, await xo.registerUser('google', profile.emails[0].value))
+        done(null, await xo.registerUser(
+          'google',
+          conf.scope === 'email'
+            ? profile.emails[0].value
+            : profile.displayName
+        ))
       } catch (error) {
         done(error.message)
       }
