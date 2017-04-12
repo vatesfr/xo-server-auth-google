@@ -17,6 +17,7 @@ export const configurationSchema = {
     },
     scope: {
       default: 'https://www.googleapis.com/auth/plus.login',
+      description: 'Note that chaging this value will break existing users.',
       enum: [ 'https://www.googleapis.com/auth/plus.login', 'email' ],
       enumNames: [ 'Google+ name', 'Simple email address' ]
     }
